@@ -26,15 +26,16 @@ export function useErrors(fromValue: string, toValue: string) {
 
 export function useNotEnoughMoney(currentAmount: number, fromValue: string) {
   const [notEnoughMoney, setNotEnoughMoney] = useState('');
-  const difference = currentAmount - parseFloat(fromValue);
 
-  // console.log(currentAmount, parseFloat(fromValue), difference);
+  useUpdate(() => {
+    const difference = currentAmount - parseFloat(fromValue);
 
-  if (difference < 0 && !notEnoughMoney) {
-    setNotEnoughMoney('Not enough money');
-  } else if (difference > 0 && notEnoughMoney) {
-    setNotEnoughMoney('');
-  }
+    if (difference < 0 && !notEnoughMoney) {
+      setNotEnoughMoney('Not enough money');
+    } else if (difference >= 0 && notEnoughMoney) {
+      setNotEnoughMoney('');
+    }
+  }, [fromValue]);
 
   return notEnoughMoney;
 }
