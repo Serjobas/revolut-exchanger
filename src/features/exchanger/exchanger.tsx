@@ -115,7 +115,7 @@ export const Exchanger = () => {
         onClick={setToPocket}
       />
       <Divider />
-      <Rate data-testid="rate">
+      <Rate>
         {formatCurrency(1, fromPocket)} ={' '}
         {formatCurrency(
           parseFloat(rates[toPocket as keyof PocketsType].toFixed(2)),
