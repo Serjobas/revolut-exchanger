@@ -100,6 +100,7 @@ export const Exchanger = () => {
     <ExchangerCard>
       <Title>From</Title>
       <PocketsList
+        data-testid="from_pocket"
         pockets={pockets}
         activePocket={fromPocket}
         onClick={handleClickFromPocket}
@@ -107,13 +108,14 @@ export const Exchanger = () => {
       <Divider />
       <Title>To</Title>
       <PocketsList
+        data-testid="to_pocket"
         pockets={pockets}
         activePocket={toPocket}
         disabledPocket={fromPocket}
         onClick={setToPocket}
       />
       <Divider />
-      <Rate>
+      <Rate data-testid="rate">
         {formatCurrency(1, fromPocket)} ={' '}
         {formatCurrency(
           parseFloat(rates[toPocket as keyof PocketsType].toFixed(2)),
@@ -141,7 +143,13 @@ export const Exchanger = () => {
       </InputsContainer>
       <Button
         onClick={handleButtonClick}
-        disabled={Boolean(!fromValue || isRatesFetching || notEnoughMoney)}
+        disabled={Boolean(
+          !fromValue ||
+            isRatesFetching ||
+            notEnoughMoney ||
+            toError ||
+            fromError,
+        )}
       >
         {buttonMessage}
       </Button>

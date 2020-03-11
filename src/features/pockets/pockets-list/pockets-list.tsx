@@ -18,9 +18,10 @@ export const PocketsList: React.FC<PocketsListProps> = ({
   activePocket,
   disabledPocket,
   onClick,
+  ...props
 }) => {
   return (
-    <PocketsContainer>
+    <PocketsContainer {...props}>
       {Object.keys(pockets).map(pocketKey => (
         <Pocket
           key={pocketKey}
@@ -28,7 +29,7 @@ export const PocketsList: React.FC<PocketsListProps> = ({
           disabled={[activePocket, disabledPocket].includes(pocketKey)}
           onClick={() => onClick(pocketKey)}
         >
-          {pocketKey}
+          {pocketKey}{' '}
           {formatCurrency(pockets[pocketKey as keyof PocketsType], pocketKey)}
         </Pocket>
       ))}

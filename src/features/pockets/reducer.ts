@@ -2,7 +2,7 @@ import { createReducer } from 'redux-act';
 import { updatePockets } from './actions';
 import { PocketsType } from './types';
 
-const initialValue: PocketsType = {
+export const initialValue: PocketsType = {
   USD: 100,
   EUR: 50.5,
   GBP: 200,

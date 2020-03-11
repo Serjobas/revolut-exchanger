@@ -30,7 +30,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "cy:open": "cypress open",
     "test": "react-scripts test",
+    "test:e2e": "PORT=3000 npm-run-all --parallel start cy:open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,6 +51,9 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^5.3.0",
+    "cypress": "^4.1.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1"
   }
 }
